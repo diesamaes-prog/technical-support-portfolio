@@ -88,6 +88,17 @@ User confirmed that Outlook was working normally.
 
 Recommended screenshots for the GitHub portfolio:
 
+<img width="462" height="367" alt="image" src="https://github.com/user-attachments/assets/c27b0db9-1af7-40d0-8459-5887c0726d9b" />
+
+<img width="1038" height="503" alt="image" src="https://github.com/user-attachments/assets/e2621bc2-ae28-4c0f-ad5c-66306f75ea54" />
+
+<img width="518" height="475" alt="image" src="https://github.com/user-attachments/assets/288b4ad7-23f2-4d67-a70f-6bc496c937ec" />
+
+<img width="485" height="422" alt="image" src="https://github.com/user-attachments/assets/93c86d53-4da4-4af3-9286-76bc78323202" />
+
+<img width="1065" height="645" alt="image" src="https://github.com/user-attachments/assets/568327e2-3d9d-4f7f-aacd-96617d3bcd51" />
+
+
 ```text
 04-MS365/
 └── troubleshooting-cases/
