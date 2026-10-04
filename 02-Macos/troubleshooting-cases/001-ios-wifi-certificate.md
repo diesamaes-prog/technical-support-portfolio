@@ -1,77 +1,157 @@
-# macOS Incident 001 — Application Not Opening
+# macOS Incident 001 — Wi-Fi Connection Fails Due to Certificate Issue
 
-## Issue
+## Incident
 
-User reported that Microsoft Teams was not opening on their Mac.
+A user contacted the Service Desk because their Mac could no longer connect to the company's secure Wi-Fi network.
 
-When clicking the Teams icon, the application appeared to start for a few seconds, but no window was displayed. The user had already restarted the Mac and confirmed that other applications, including Safari and Outlook, were working normally.
+The user reported that the Mac could see the corporate Wi-Fi network, but the connection would fail after entering their credentials. The same credentials were working on other company systems.
+
+The issue started after the Mac had been restarted.
+
+The user was able to connect to a guest Wi-Fi network, which confirmed that the wireless hardware was working and that the Mac could connect to a wireless network.
+
+The problem was specific to the corporate network.
 
 ## Troubleshooting
 
-I first confirmed that the problem was isolated to Teams. Since other applications were opening normally, there was no immediate indication of a general macOS or hardware problem.
+I first confirmed that the corporate Wi-Fi network was visible from the Mac.
 
-I checked Activity Monitor to see whether Teams was still running in the background. A Teams process was present even though the application window was not displayed.
+The network appeared in the available Wi-Fi networks, but the connection failed during authentication.
 
-I selected the process and used **Quit → Force Quit**.
+I connected the Mac to the guest network temporarily to confirm that general Wi-Fi connectivity was working.
 
-After the process was terminated, I launched Teams again.
+The Mac successfully connected to the guest network and was able to access the Internet.
 
-The application opened normally and the user was able to sign in.
+This ruled out a general Wi-Fi adapter or hardware problem.
+
+I then attempted to connect to the corporate network again and observed the authentication process.
+
+The Mac prompted for authentication but was unable to complete the connection.
+
+Because the corporate network uses certificate-based authentication, I checked the certificates available on the Mac through **Keychain Access**.
+
+The certificate used for authentication was present, but it was expired.
+
+The expiration date matched the approximate time when the user first noticed the problem.
 
 ## Root Cause
 
-The Teams process had become unresponsive and remained running in the background. Because the process was still active, launching the application again did not produce a working application window.
+The Mac was attempting to authenticate to the corporate Wi-Fi network using an expired client certificate.
+
+The wireless hardware and network connection were functioning correctly. The failure was occurring during the authentication stage because the certificate required by the corporate 802.1X configuration was no longer valid.
 
 ## Resolution
 
-The unresponsive Teams process was force-quit through Activity Monitor and the application was launched again.
+Following the organization's certificate deployment procedure, the expired certificate was removed from the affected user configuration and the current certificate was deployed to the Mac.
 
-No reinstallation was necessary.
+The corporate Wi-Fi profile was then refreshed.
+
+The user attempted to connect to the corporate network again.
+
+The Mac successfully completed the authentication process and connected to the network.
 
 ## Verification
 
-After reopening Teams, I confirmed that:
+After reconnecting, I verified that:
 
-* The application opened normally.
-* The sign-in screen loaded.
-* The user was able to access their account.
-* Teams was able to connect normally.
-* No additional errors were reported.
+* The Mac was connected to the corporate SSID.
+* The device received a valid IP address.
+* The default gateway was reachable.
+* DNS resolution was working.
+* Internal resources were accessible.
+* Internet access was restored.
 
-The user confirmed that Teams was working again.
+The user confirmed that they could access the resources required for their work.
 
 ## Ticket Notes
 
-**Issue:** Microsoft Teams would not open.
+**Issue:** Mac unable to connect to corporate Wi-Fi.
 
-**Cause:** Unresponsive Teams process running in the background.
+**Affected network:** Corporate 802.1X Wi-Fi
 
-**Resolution:** Force-quit the Teams process through Activity Monitor and relaunch the application.
+**Initial observation:** Corporate SSID visible, authentication unsuccessful.
 
-**Result:** Application restored to normal operation.
+**Additional test:** Guest Wi-Fi connection successful.
+
+**Cause:** Expired client certificate used for wireless authentication.
+
+**Resolution:** Replaced the expired certificate and refreshed the corporate Wi-Fi configuration.
+
+**Verification:** Successful 802.1X authentication and network connectivity restored.
 
 **Status:** Resolved.
 
----
+## Technical Details
 
-### Technical Notes
+The important distinction in this incident was between **Wi-Fi connectivity** and **network authentication**.
 
-Useful macOS tools for this type of issue include:
+The Mac's wireless adapter was functioning because it could detect the corporate network and successfully connect to the guest network.
 
-**Activity Monitor**
+The failure occurred during the authentication process used by the corporate network.
 
-Used to identify applications or processes that are consuming resources or have become unresponsive.
+The corporate environment used **802.1X certificate-based authentication**, so the certificate stored on the Mac had to be valid before the device could complete the connection.
+
+Keychain Access was used to inspect the certificate and confirm that it was expired.
+
+The troubleshooting path was:
+
+```text
+Corporate Wi-Fi visible
+        ↓
+Authentication fails
+        ↓
+Test guest Wi-Fi
+        ↓
+Guest Wi-Fi works
+        ↓
+Wireless hardware/network adapter OK
+        ↓
+Check corporate authentication
+        ↓
+Inspect certificates in Keychain Access
+        ↓
+Expired client certificate identified
+        ↓
+Deploy current certificate
+        ↓
+Refresh Wi-Fi configuration
+        ↓
+Corporate Wi-Fi connects successfully
+```
+
+## macOS Tools Used
+
+**Keychain Access**
+
+Used to inspect certificates stored on the Mac and verify their validity and expiration.
+
+**Wi-Fi Settings**
+
+Used to review available networks and reconnect to the corporate SSID.
 
 **Terminal**
 
-A process can also be investigated from Terminal with:
+Network connectivity can be verified after authentication with commands such as:
 
 ```bash
-ps aux | grep -i "Teams"
+ifconfig
 ```
 
-The process should only be terminated when it has been correctly identified.
+```bash
+ping -c 4 <gateway>
+```
 
-**Why I would not reinstall the application immediately**
+```bash
+nslookup <internal-domain>
+```
 
-Reinstalling software before identifying the cause can remove useful diagnostic information and unnecessarily affect the user's configuration. Since the issue was caused by a stuck process, restarting that process was sufficient.
+These checks help confirm that the issue has moved beyond authentication and that the Mac has normal network connectivity.
+
+## Final Resolution
+
+The expired wireless authentication certificate was replaced with a valid certificate issued through the organization's approved certificate deployment process.
+
+After refreshing the Wi-Fi configuration, the Mac successfully authenticated to the corporate network and normal connectivity was restored.
+
+No hardware replacement was required.
+
