@@ -1,0 +1,252 @@
+Networking Incident 003 — DNS Resolution Failure
+Incident
+
+A user reports that their Windows computer is connected to the network, but websites are not loading correctly.
+
+The user can see that the computer is connected to the local network, but they are unable to access websites or web-based applications.
+
+The issue appears to affect Internet access from the computer. The first step is to determine whether the problem is related to the local TCP/IP configuration, the network gateway, Internet connectivity, DNS resolution, or the remote service itself.
+
+This incident is being investigated using a Windows workstation and PowerShell.
+
+Environment
+
+Operating System: Windows 10/11
+Connection: Ethernet / Wi-Fi
+Device: Windows workstation
+Tools: PowerShell, Windows networking utilities
+Support Level: L1/L2 Service Desk
+
+Initial Report
+
+User: "My computer says it's connected to the Internet, but websites aren't loading."
+
+The user has already confirmed that the network connection appears active.
+
+The first step is to verify whether the computer has a valid network configuration.
+
+1. Check IP Configuration
+
+The following command was used to review the computer's current network configuration:
+
+ipconfig /all
+What I checked
+IPv4 address
+Subnet mask
+Default gateway
+DNS servers
+DHCP configuration
+Network adapter status
+Evidence
+
+
+
+Findings
+[Add findings after running the command]
+2. Test the Local TCP/IP Stack
+
+The next test checks whether the local TCP/IP stack is responding correctly.
+
+ping 127.0.0.1
+
+The loopback address does not depend on the external network connection. A successful response indicates that the local TCP/IP stack is functioning.
+
+Evidence
+
+Screenshot: 02-ping-loopback.png
+
+Paste the screenshot here.
+
+Findings
+[Add findings]
+3. Test the Default Gateway
+
+The default gateway was tested to determine whether the computer could communicate with the local network router.
+
+ping <default-gateway>
+
+The gateway address should be taken from the Default Gateway value shown by ipconfig /all.
+
+Evidence
+
+Screenshot: 03-ping-gateway.png
+
+Paste the screenshot here.
+
+Findings
+[Add findings]
+4. Test Internet Connectivity Without DNS
+
+The next test checks Internet connectivity using an IP address instead of a hostname.
+
+ping 8.8.8.8
+
+Using an IP address is useful because this test does not require DNS resolution.
+
+If this test succeeds while hostname-based access fails, DNS becomes a strong suspect.
+
+Evidence
+
+Screenshot: 04-ping-internet.png
+
+Paste the screenshot here.
+
+Findings
+[Add findings]
+5. Test DNS Resolution
+
+The next step is to determine whether the computer can translate a hostname into an IP address.
+
+nslookup google.com
+
+This test checks whether the configured DNS server can resolve the requested hostname.
+
+Evidence
+
+Screenshot: 05-nslookup.png
+
+Paste the screenshot here.
+
+Findings
+[Add findings]
+6. Test HTTPS Connectivity
+
+After checking DNS, I tested connectivity to the remote HTTPS service.
+
+Test-NetConnection google.com -Port 443
+
+This helps determine whether TCP connectivity to port 443 is available.
+
+Evidence
+
+Screenshot: 06-test-netconnection.png
+
+Paste the screenshot here.
+
+Findings
+[Add findings]
+Investigation
+
+The results from the previous tests are compared to determine where the connection is failing.
+
+The troubleshooting path is:
+
+Network Adapter
+      ↓
+IP Configuration
+      ↓
+Local TCP/IP Stack
+      ↓
+Default Gateway
+      ↓
+Internet Connectivity
+      ↓
+DNS Resolution
+      ↓
+TCP 443 / HTTPS
+      ↓
+Application
+
+The purpose of testing each layer separately is to avoid changing settings before identifying the actual failure.
+
+Investigation Results
+IP configuration:
+[Document result]
+
+Local TCP/IP:
+[Document result]
+
+Default gateway:
+[Document result]
+
+Internet connectivity:
+[Document result]
+
+DNS resolution:
+[Document result]
+
+TCP 443:
+[Document result]
+Root Cause
+
+Root Cause:
+
+[Complete after the troubleshooting results are available.]
+
+The root cause should be based on the evidence collected rather than assumed at the beginning of the investigation.
+
+Resolution
+
+[Document the actual corrective action performed.]
+
+If the issue is confirmed to be DNS-related, document:
+
+What DNS configuration was incorrect.
+What change was made.
+Whether the DNS cache was cleared.
+Whether the computer required reconnection or adapter restart.
+Whether the change was temporary or permanent.
+Verification
+
+After applying the resolution, the following tests should be repeated as appropriate:
+
+nslookup google.com
+Test-NetConnection google.com -Port 443
+
+A web browser should then be used to confirm that normal websites load successfully.
+
+Evidence
+
+Screenshot: 07-dns-after-fix.png
+
+Paste the screenshot here.
+
+Screenshot: 08-final-browser-test.png
+
+Paste the screenshot here.
+
+Verification Results
+DNS resolution:
+[Result]
+
+HTTPS connectivity:
+[Result]
+
+Web browsing:
+[Result]
+
+User confirmation:
+[Result]
+Final Ticket Notes
+
+Issue: Windows computer connected to the network but unable to access websites.
+
+Initial symptom: Websites were not loading.
+
+Affected user: Single workstation.
+
+Investigation: IP configuration, local TCP/IP, gateway connectivity, Internet connectivity, DNS resolution, and TCP 443 were tested.
+
+Root Cause: [Complete after investigation.]
+
+Resolution: [Complete after investigation.]
+
+Verification: [Complete after investigation.]
+
+Status: Resolved.
+
+Evidence
+
+The following screenshots document the troubleshooting process:
+
+evidence/
+├── 01-ipconfig.png
+├── 02-ping-loopback.png
+├── 03-ping-gateway.png
+├── 04-ping-internet.png
+├── 05-nslookup.png
+├── 06-test-netconnection.png
+├── 07-dns-after-fix.png
+└── 08-final-browser-test.png
+
+All screenshots should be reviewed before being uploaded to GitHub. Remove or redact personal information such as public IP addresses, MAC addresses, computer names, usernames, internal domain names, and other identifying network information where necessary.
