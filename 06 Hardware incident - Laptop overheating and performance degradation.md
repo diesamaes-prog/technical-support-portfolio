@@ -195,43 +195,54 @@ After startup, allow the system to remain idle for several minutes and then revi
 Compare the system behavior with the initial observation.
 
 **Evidence:**
-`10-post-restart-verification.png`
 
-**[INSERT EVIDENCE HERE]**
+<img width="1356" height="903" alt="image" src="https://github.com/user-attachments/assets/28752991-3c05-46f2-baac-478975a3c7f3" />
+
 
 ---
 
 # Investigation Results
 
 **System resource utilization:**
-[RESULT]
+System resource utilization was reviewed through Task Manager while the workstation was idle. CPU, memory, disk, and GPU activity were assessed to determine whether excessive resource consumption could explain the reported performance degradation.
+**Result:** [INSERT ACTUAL CPU / MEMORY / DISK / GPU RESULTS]
 
 **Resource-consuming process:**
-[RESULT]
+Running processes were reviewed and sorted by CPU, memory, and disk utilization to identify any application or background process generating abnormal system load.
+**Result:** [INSERT ACTUAL PROCESS AND RESOURCE USAGE]
 
 **System uptime:**
-[RESULT]
+Windows system uptime was reviewed through Task Manager to determine whether prolonged uptime could be contributing to the reported behavior.
+**Result:** [INSERT ACTUAL UPTIME]
 
 **Windows Update status:**
-[RESULT]
+Windows Update was checked for pending updates, installation activity, errors, or a required restart.
+**Result:** [INSERT ACTUAL WINDOWS UPDATE STATUS]
 
 **Available storage:**
-[RESULT]
+Available storage on the system drive was reviewed to determine whether insufficient disk space could contribute to degraded system performance.
+**Result:** [INSERT AVAILABLE SPACE / TOTAL CAPACITY]
 
 **Hardware/System events:**
-[RESULT]
+Windows System event logs were reviewed for recent hardware, disk, driver, thermal, and unexpected-shutdown events.
+**Result:** [INSERT RELEVANT EVENT OR STATE THAT NO RELEVANT HARDWARE EVENT WAS FOUND]
 
 **Device Manager status:**
-[RESULT]
+Device Manager was reviewed for hardware devices reporting warnings or driver-related problems.
+**Result:** [INSERT ACTUAL RESULT — FOR EXAMPLE, "NO DEVICES DISPLAYED A WARNING ICON"]
 
 **Thermal information:**
-[RESULT]
+Available thermal information was reviewed using the hardware monitoring capabilities available on the workstation.
+**Result:** [INSERT ACTUAL TEMPERATURES OR "TEMPERATURE TELEMETRY WAS NOT AVAILABLE"]
 
 **Physical inspection:**
-[RESULT]
+The workstation's ventilation openings, fan area, and exterior condition were inspected for visible obstruction, excessive dust, physical damage, or abnormal fan behavior.
+**Result:** [INSERT ACTUAL PHYSICAL INSPECTION RESULT]
 
 **Post-restart behavior:**
-[RESULT]
+The workstation was restarted and allowed to return to an idle state before system performance and fan behavior were reassessed.
+**Result:** [INSERT ACTUAL POST-RESTART BEHAVIOR]
+
 
 ---
 
