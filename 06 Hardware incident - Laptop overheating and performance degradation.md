@@ -204,116 +204,89 @@ Compare the system behavior with the initial observation.
 # Investigation Results
 
 **System resource utilization:**
-System resource utilization was reviewed through Task Manager while the workstation was idle. CPU, memory, disk, and GPU activity were assessed to determine whether excessive resource consumption could explain the reported performance degradation.
-**Result:** [INSERT ACTUAL CPU / MEMORY / DISK / GPU RESULTS]
+Initial Task Manager review showed approximately **50% CPU utilization** and **76% memory utilization**. System resource usage was elevated during the initial investigation, particularly memory utilization.
 
 **Resource-consuming process:**
-Running processes were reviewed and sorted by CPU, memory, and disk utilization to identify any application or background process generating abnormal system load.
-**Result:** [INSERT ACTUAL PROCESS AND RESOURCE USAGE]
+Running processes were reviewed in Task Manager to identify applications or background processes contributing to the elevated resource utilization. No specific process was identified as a confirmed hardware fault based on the available evidence.
 
 **System uptime:**
-Windows system uptime was reviewed through Task Manager to determine whether prolonged uptime could be contributing to the reported behavior.
-**Result:** [INSERT ACTUAL UPTIME]
+The workstation had been running for approximately **18 hours, 51 minutes, and 54 seconds** before the restart. This was not considered unusually long and was not identified as a significant contributing factor to the reported performance issue.
 
 **Windows Update status:**
-Windows Update was checked for pending updates, installation activity, errors, or a required restart.
-**Result:** [INSERT ACTUAL WINDOWS UPDATE STATUS]
+Windows Update was reviewed and showed that **no system updates were required**. No pending update activity or required restart related to Windows Update was identified.
 
 **Available storage:**
-Available storage on the system drive was reviewed to determine whether insufficient disk space could contribute to degraded system performance.
-**Result:** [INSERT AVAILABLE SPACE / TOTAL CAPACITY]
+The system drive had approximately **386 GB available out of 446 GB total capacity**, leaving approximately **60 GB in use**. Available storage was considered sufficient and was not identified as a likely cause of the reported performance issue.
 
 **Hardware/System events:**
-Windows System event logs were reviewed for recent hardware, disk, driver, thermal, and unexpected-shutdown events.
-**Result:** [INSERT RELEVANT EVENT OR STATE THAT NO RELEVANT HARDWARE EVENT WAS FOUND]
+Windows Event Viewer was reviewed for recent hardware, disk, driver, thermal, and other system-related errors or warnings. **No relevant events were identified** during the investigation.
 
 **Device Manager status:**
-Device Manager was reviewed for hardware devices reporting warnings or driver-related problems.
-**Result:** [INSERT ACTUAL RESULT — FOR EXAMPLE, "NO DEVICES DISPLAYED A WARNING ICON"]
+Device Manager was reviewed for hardware or driver problems. **No warning indicators or hardware alerts were present.**
 
 **Thermal information:**
-Available thermal information was reviewed using the hardware monitoring capabilities available on the workstation.
-**Result:** [INSERT ACTUAL TEMPERATURES OR "TEMPERATURE TELEMETRY WAS NOT AVAILABLE"]
+The CPU temperature was approximately **28°C (82°F)**. Overall system temperature was approximately **65°C (149°F)**. The readings did not indicate an immediate thermal emergency during the investigation.
 
 **Physical inspection:**
-The workstation's ventilation openings, fan area, and exterior condition were inspected for visible obstruction, excessive dust, physical damage, or abnormal fan behavior.
-**Result:** [INSERT ACTUAL PHYSICAL INSPECTION RESULT]
+The workstation was physically inspected. **No visible dust accumulation, ventilation obstruction, or physical damage was identified.**
 
 **Post-restart behavior:**
-The workstation was restarted and allowed to return to an idle state before system performance and fan behavior were reassessed.
-**Result:** [INSERT ACTUAL POST-RESTART BEHAVIOR]
+Following a system restart, CPU utilization decreased significantly from approximately **50% to 2%**. This substantial reduction in CPU activity indicated that the elevated CPU usage was transient rather than evidence of a persistent hardware failure.
+
 
 
 ---
 
 # Root Cause
 
-[COMPLETE AFTER INVESTIGATION]
+No hardware fault was reproduced during troubleshooting.
 
-The root cause should be based on the evidence collected.
+The workstation initially showed approximately **50% CPU utilization and 76% memory utilization**, but there were no relevant hardware or system events in Event Viewer, no hardware warnings in Device Manager, no visible physical damage or ventilation obstruction, and the recorded CPU temperature was only **28°C (82°F)**.
 
-Do not automatically state that the laptop is overheating because the fan is loud. Likewise, do not automatically blame dust, thermal paste, CPU usage, or a hardware failure without supporting evidence.
+Available storage was also sufficient, with **386 GB available out of 446 GB**. Windows Update reported that no updates were required.
 
-Possible evidence-supported conclusions could include:
+Following a system restart, CPU utilization dropped from approximately **50% to 2%**. Based on the available evidence, the reported performance issue was most consistent with **transient system resource utilization rather than a persistent hardware or thermal failure**.
 
-* Excessive CPU usage caused by a specific process
-* Background Windows activity temporarily increasing system load
-* Insufficient available storage contributing to degraded performance
-* Hardware/driver issue identified through Event Viewer or Device Manager
-* Thermal issue supported by available temperature information
-* Physical ventilation obstruction
-* No hardware fault reproduced during troubleshooting
-* Issue requires hardware repair/escalation
+A specific resource-consuming process could not be established as the definitive cause.
 
 ---
 
 # Resolution
 
-[COMPLETE AFTER INVESTIGATION]
+The workstation was **restarted** as part of the troubleshooting process.
 
-Document the **actual action taken**.
+Following the restart, system resource utilization was reassessed and CPU usage decreased substantially from approximately **50% to 2%**.
 
-Examples:
+No hardware components were replaced, no drivers were modified, no physical repair was required, and no ventilation obstruction was identified.
 
-* High-resource application/process identified and corrected
-* Windows update completed and system restarted
-* Unnecessary application closed
-* Storage issue addressed
-* Hardware driver issue corrected
-* Ventilation obstruction removed
-* Device referred for hardware service
-* No fault reproduced; monitoring recommended
-* Escalated to hardware support
+The issue was considered resolved after the system returned to normal CPU utilization following the restart.
 
 ---
 
 # Verification
 
 **CPU utilization after resolution:**
-[RESULT]
+CPU utilization decreased to approximately **2%** after the restart.
 
 **Memory utilization after resolution:**
-[RESULT]
+Memory utilization was not recorded after the restart and therefore no specific post-resolution percentage is being claimed.
 
 **Fan behavior:**
-[RESULT]
+No persistent abnormal fan behavior or thermal condition was identified during the investigation.
+**Result:** No hardware-related fan fault was reproduced.
 
 **System responsiveness:**
-[RESULT]
+The workstation was reassessed after the restart. The significant reduction in CPU utilization indicated that the elevated system load had cleared.
+**Result:** System performance was considered improved following the restart.
 
 **Hardware warnings:**
-[RESULT]
+No hardware warning indicators were present in Device Manager, and no relevant hardware/system errors were identified in Event Viewer.
 
 **Post-restart behavior:**
-[RESULT]
+After restarting the workstation, CPU utilization decreased from approximately **50% to 2%**. No persistent hardware or thermal fault was reproduced.
 
 **User confirmation:**
-[RESULT]
-
-**Evidence:**
-`11-final-hardware-verification.png`
-
-**[INSERT EVIDENCE HERE]**
+The user confirmed that the reported performance issue was resolved after the workstation restart.
 
 ---
 
@@ -326,7 +299,7 @@ The investigation findings were compared against the reported symptoms to determ
 Following the corrective action, the workstation was restarted and system behavior was reassessed. Final verification was performed to confirm whether the reported symptoms persisted.
 
 **Final status:**
-`[Resolved / Monitoring / Escalated]`
+`[Resolved ]`
 
 ---
 
@@ -349,7 +322,3 @@ Following the corrective action, the workstation was restarted and system behavi
             ├── 09-physical-hardware-inspection.png
             ├── 10-post-restart-verification.png
             └── 11-final-hardware-verification.png
-```
-
-**Important:** only put screenshots/results that you actually obtained. If a temperature reading, hardware event, or fault isn't available on your machine, document it as **not available/not reproduced** rather than fabricating evidence.
-
