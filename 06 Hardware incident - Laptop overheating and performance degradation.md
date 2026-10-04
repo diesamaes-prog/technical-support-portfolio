@@ -25,7 +25,7 @@ Open **Task Manager → Performance** and review:
 * GPU utilization
 
 The system should be observed while idle before opening additional applications.
-
+ 
 **Evidence:**
 
 <img width="652" height="292" alt="image" src="https://github.com/user-attachments/assets/de2e65a4-d418-4bc0-89f4-7e03b54e6834" />
