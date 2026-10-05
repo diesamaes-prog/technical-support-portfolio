@@ -1,3 +1,7 @@
+<p align="center">
+<img width="2064" height="512" alt="Gemini_Generated_Image_keu4yukeu4yukeu4" src="https://github.com/user-attachments/assets/41a28c95-de8a-438c-a35c-b94a5b73ff30" />
+</p>
+
 # Diego Maciel
 
 ## Technical Support | Service Desk | IT Operations
