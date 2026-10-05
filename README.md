@@ -66,12 +66,3 @@ My troubleshooting approach follows a structured process:
 9. Document the solution
 10. Escalate when required
 
-## Current Projects
-
-🚧 Portfolio currently under development.
-
-The repository will progressively include hands-on labs, screenshots, scripts, troubleshooting cases, technical documentation, and a final end-to-end support environment.
-
-## Disclaimer
-
-All laboratory scenarios use fictional users, systems, and data. No confidential information, customer information, credentials, or proprietary company information is included in this repository.
