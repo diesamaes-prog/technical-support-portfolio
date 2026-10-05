@@ -221,7 +221,7 @@ No credentials were requested or documented.
 
 ```text
 
-<img width="234" height="411" alt="image" src="https://github.com/user-attachments/assets/46236a15-2116-465e-9120-c06e387d8756" />
+![](https://github.com/user-attachments/assets/46236a15-2116-465e-9120-c06e387d8756)
 
 
 ---
@@ -307,6 +307,7 @@ Save the AI response.
 **Evidence:**
 
 ```text
+
 <img width="764" height="292" alt="image" src="https://github.com/user-attachments/assets/4b8b2389-a9da-46c5-a0ed-d203c18757a9" />
 
 <img width="778" height="245" alt="image" src="https://github.com/user-attachments/assets/01e2346e-5b6b-401f-9019-16d1ab715914" />
