@@ -221,7 +221,7 @@ No credentials were requested or documented.
 
 ```text
 
-![](https://github.com/user-attachments/assets/46236a15-2116-465e-9120-c06e387d8756)
+
 
 
 ---
